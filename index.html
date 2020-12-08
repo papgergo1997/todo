@@ -1,48 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <main class="todo__main">
         <h1>Daily To-Do List Manager</h1>
         <section class="todo__box">
-            <div class="day"></div>
-            <div class="date"></div>
+            <div class="day">Thursday</div>
+            <div class="date">05-31-2013</div>
             <div class="input">
                 <input class="todo__input" type="text" placeholder="Take the garbage out">
-                <button class="plus__btn"><i class= "fa fa-plus"></i></button>
+                <button class="plus__btn fa fa-plus"></button>
             </div>
+            <div class="item__counter">You have <span>3</span> pending items</div>
             <div class="list">
-                <h3></h3>
+                
                 <div class="list__item">
                     <input type="checkbox" name="" class="checkbox">
                     <p>Go to shopping</p>
-                    <button class="delete"></button>
+                    <button class="delete fa fa-trash"></button>
                 </div>
                 <div class="list__item">
                     <input type="checkbox" name="" class="checkbox">
                     <p>Go to shopping</p>
-                    <button class="delete"></button>
+                    <button class="delete fa fa-trash"></button>
                 </div>
                 <div class="list__item">
                     <input type="checkbox" name="" class="checkbox">
                     <p>Go to shopping</p>
-                    <button class="delete"></button>
+                    <button class="delete fa fa-trash"></button>
                 </div>
             </div>
             <div class="list__complete">
-                <h3></h3>
-                <p class="list__complete--item"></p>
-                <p class="list__complete--item"></p>
+                <div class="complete__counter">Completed tasks: 50%</div>
+                <div class="list__complete--item">
+                    <i class="fa fa-check-square"></i>
+                    <p>
+                        sdf
+                    </p>
+                </div>
+                <div class="list__complete--item">
+                    <i class="fa fa-check-square"></i>
+                    <p>
+                        fsaffaw
+                    </p>
+                </div>
             </div>
             <button class="complete__btn"></button>
             <button class="clear__btn"></button>
-        </section>   
+        </section>
     </main>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
