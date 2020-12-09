@@ -137,6 +137,16 @@ h1 {
     border-radius: 0px 3px 3px 0;
     cursor: pointer;
     transition: background-color 0.15s ease-in;
+    animation: delete 2s 1;
+}
+
+@keyframes delete {
+    0% {
+        right: -50px
+    }
+    50% {
+        right:0px
+    }
 }
 
 .delete:hover {
