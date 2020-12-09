@@ -14,12 +14,19 @@ const completeBtn = document.querySelector('.complete__btn');
 const clearBtn = document.querySelector('.clear__btn');
 
 /*ITEM COUNTER*/
+let itemCounter = 0;
 
-function counter() {
+
+function plusCounter() {
     itemCounter++;
     todoSpan.innerText = itemCounter;
 }
-let itemCounter = 0;
+
+function minusCounter() {
+    itemCounter--;
+    todoSpan.innerText = itemCounter;
+}
+
 
 /*CURRENT DATE*/
 (function () {
@@ -70,7 +77,7 @@ function itemAdder() {
         return
     } else {
         creatItem(todoInput.value);
-        counter();
+        plusCounter();
     }
 
     todoInput.value = '';
@@ -84,6 +91,7 @@ function itemRemover() {
         close[i].onclick = function () {
             let div = this.parentElement;
             div.style.display = "none";
+            minusCounter();
         }
     }
 };
