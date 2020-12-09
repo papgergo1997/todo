@@ -27,6 +27,8 @@ h1 {
     font-size: 30px;
 }
 
+
+/*Box*/
 .todo__box {    
     margin: auto;
     margin-top: 40px;
@@ -37,6 +39,8 @@ h1 {
     box-shadow: 0 0 9px rgb(50, 50, 50);
 }
 
+
+/*Date*/
 .day {
     margin-left: 1rem;
     margin-top: 3rem;
@@ -55,6 +59,8 @@ h1 {
     margin-left: 1rem;    
 }
 
+
+/*List Item Adder*/
 .input .todo__input {
     border-radius: 3px;
     border: transparent;
@@ -85,6 +91,9 @@ h1 {
     background-color: green;
 }
 
+
+
+/*List*/
 .item__counter {
     margin-left: 1rem;
     margin-top: 2rem;
@@ -104,7 +113,6 @@ h1 {
     position: relative;
     display: flex;
     height: 50px;
-    flex-direction: row;
     background-color: rgb(184, 189, 199);
     margin-top: 10px;
     align-items: center;
@@ -135,5 +143,41 @@ h1 {
     background-color: rgb(200, 74, 74);
 }
 
+
+
+/*Complete List*/
+.list__complete {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(200, 200, 200);
+    border-radius: 0 0 5px 5px;
+    height: 35%;
+    margin-bottom: -30px;
+    padding-bottom: 10px;
+}
+
+.list__complete--item {
+    display: flex;
+    align-items: center;
+}
+
+.list__complete--item p {
+    text-decoration: line-through;
+}
+
+
+/*Box Bottom Buttons*/
+
+.bottom__btn {
+    border: transparent;
+    background-color: rgb(200, 200, 200);
+    font-weight: 700;
+    outline: transparent;
+    cursor: pointer;
+}
+
+.complete__btn {    
+    margin-left: 80px;    
+}
 
 
