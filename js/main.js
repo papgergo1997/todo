@@ -5,7 +5,13 @@ const date = document.querySelector('.date');
 const myDate = new Date();
 const todoInput = document.querySelector('.todo__input');
 const plusBtn = document.querySelector('.plus__btn');
+const todoSpan = document.querySelector('.todo__span');
+const todoList = document.querySelector('.list');
+const completeSpan = document.querySelector('.complete__span');
 const deletBtn = document.querySelectorAll('.delete');
+const checkBox = document.querySelectorAll('.checkbox');
+const completeBtn = document.querySelector('.complete__btn');
+const clearBtn = document.querySelector('.clear__btn');
 
 
 (function(){
@@ -37,3 +43,17 @@ const deletBtn = document.querySelectorAll('.delete');
     date.innerHTML = `${days}-${months}-${years}`
 })()
     
+function listItemAdder(/*ha nem működik lehet hogy stringgé kell alakítani a bevitt adatot*/input) {
+let output = document.createElement('DIV')
+output.classList.add('list__item')
+output.innerHTML = `
+ <input type="checkbox" name="" class="checkbox">
+ <p>${input}</p>
+ <button class="delete fa fa-trash"></button>
+ `;
+
+todoList.appendChild(output);
+};
+
+listItemAdder('kaja');
+
