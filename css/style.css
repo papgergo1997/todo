@@ -156,13 +156,30 @@ h1 {
     padding-bottom: 10px;
 }
 
+.complete__counter {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    margin-top: -2rem;
+}
+
 .list__complete--item {
     display: flex;
+    background-color: rgb(220, 220, 220);
+    border-radius: 3px;
     align-items: center;
+    margin-left: 1rem;
+    width: 91%;
+    margin-bottom: 0.5rem;
+}
+
+.list__complete--item i {
+    margin-left: 4px;
+    font-size: larger;
 }
 
 .list__complete--item p {
     text-decoration: line-through;
+    margin-left: 4px;
 }
 
 
