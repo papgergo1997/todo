@@ -11,7 +11,7 @@ const todoList = document.querySelector('.list');
 const completeList = document.querySelector('.list__complete');
 const completeSpan = document.querySelector('.complete__span');
 //const deleteBtn = document.querySelectorAll('.delete');
-const checkBox = document.querySelectorAll('.checkbox');
+//const checkBox = document.querySelectorAll('.checkbox');
 const completeBtn = document.querySelector('.complete__btn');
 const clearBtn = document.querySelector('.clear__btn');
 
@@ -70,7 +70,20 @@ function createItem(/*ha nem működik lehet hogy stringgé kell alakítani a be
  <button class="delete fa fa-trash"></button>
  `;
     todoList.appendChild(output);
-    itemRemover()    
+    itemRemover();
+    // onclickListItem();
+    addToCompleteList();
+};
+
+function createCompleteItem(item/*ha nem működik lehet hogy stringgé kell alakítani a bevitt adatot*/) {
+    let output = document.createElement('DIV')
+    output.classList.add('list__complete--item')
+    output.innerHTML = `
+    <i class="fa fa-check-square"></i>
+    <p>${item}</p>
+ `;
+    completeList.appendChild(output);
+    itemRemover()
 };
 
 /*ITEM ADDING*/
@@ -80,7 +93,7 @@ function itemAdder() {
     } else {
         itemCounterText[0].style.display = 'block';
         completeBtn.style.display = 'inline';
-        clearBtn.style.display = 'inline';        
+        clearBtn.style.display = 'inline';
         hurray();
         createItem(todoInput.value);
         plusCounter();
@@ -91,11 +104,11 @@ function itemAdder() {
 
 /*ITEM REMOVE*/
 function itemRemover() {
-    let close = document.getElementsByClassName('delete');
+    let close = document.querySelectorAll('.delete');
     for (let i = 0; i < close.length; i++) {
-        close[i].onclick = function () {            
-             let div = this.parentElement;
-             div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
+            close[i].onclick = function () {
+            let div = this.parentElement;
+            div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
             minusCounter();
         }
     }
@@ -104,29 +117,43 @@ function itemRemover() {
 /*COMPLETE LIST*/
 
 function showHideComplete() {
-    if(completeBtn.innerText == 'Show Complete') {
+    if (completeBtn.innerText == 'Show Complete') {
         completeList.style.display = 'flex';
         completeBtn.innerText = 'Hide Complete';
     } else {
         completeList.style.display = 'none';
         completeBtn.innerText = 'Show Complete';
-    };    
+    };
+};
+
+function addToCompleteList() {
+    let checkbox = document.querySelectorAll('.checkbox');
+    for (let i = 0; i < checkbox.length; i++) {
+        checkbox[i].onclick = function () {
+            let div = this.parentElement;
+            div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
+            let item = div.innerText
+            createCompleteItem(item);
+            minusCounter();
+        }
+    }
 };
 
 /*CLEAR ALL*/
 
-function clearAll() {      
-    clear = true;  
-    let noTasksOutput =  `<div class="no__tasks">
+function clearAll() {
+    clear = true;
+    let noTasksOutput = `<div class="no__tasks">
     <i class="fa fa-glass"></i>
     <p>Time to chill! You have no todos.!</p>
     </div>`
     todoList.innerHTML = noTasksOutput;
-    itemCounterText[0].style.display = 'none'; 
+    itemCounterText[0].style.display = 'none';
     completeList.style.display = 'none';
-    completeList.innerHtml = ''; 
+    completeList.innerHtml = '';
     completeBtn.style.display = 'none';
     clearBtn.style.display = 'none';
+    completeBtn.innerText = 'Show Complete';
     itemCounter = 0;
 }
 
@@ -135,24 +162,11 @@ function hurray() {
         todoList.innerHTML = '';
     } else {
         return
-    }    
+    }
 };
 
 plusBtn.addEventListener('click', itemAdder);
 completeBtn.addEventListener('click', showHideComplete);
 clearBtn.addEventListener('click', clearAll);
 
-
-// function itemRemover() {
-//     let close = document.getElementsByClassName('delete');
-//     for (let i = 0; i < close.length; i++) {
-//         close[i].style.display = 'none'
-//         close[i].onclick = function () {            
-//             close[i].style.display = 'block'
-//             // let div = this.parentElement;
-//             // div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
-//             minusCounter();
-//         }
-//     }
-// };
 
