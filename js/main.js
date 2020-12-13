@@ -40,10 +40,14 @@ const local = {
         addToCompleteList();
     },
 
-    deleteOneLocalItem() {
-        for (let i = 0; i < localStorage.length; i++) {        
-        localStorage.removeItem(localStorage.key(i))
-    }
+    deleteOneLocalItem(value) {                  
+        for (let i = 0; i< localStorage.length; i ++) {
+            if (localStorage.getItem(i) == value) {
+                return
+            } else {
+                localStorage.removeItem(localStorage.key(i));//Ezt még ki kell dolgozni!!!!!
+            }
+        }
     },
 
     deleteAllLocalItems() {
@@ -184,6 +188,7 @@ function addToCompleteList() {
             let div = this.parentElement;
             div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
             let item = div.innerText
+            local.deleteOneLocalItem(item)
             createCompleteItem(item);
             minusCounter();
         }
