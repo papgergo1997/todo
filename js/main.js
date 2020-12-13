@@ -1,4 +1,6 @@
 'use strict'
+let itemCounter = 0;
+let localCounter = 0;
 let clear = null;
 const day = document.querySelector('.day');
 const date = document.querySelector('.date');
@@ -15,8 +17,54 @@ const completeSpan = document.querySelector('.complete__span');
 const completeBtn = document.querySelector('.complete__btn');
 const clearBtn = document.querySelector('.clear__btn');
 
+/*LOCAL STORAGE*/
+const local = {
+    setLocalItem(key, input) {
+        localStorage.setItem(key, JSON.stringify(input))
+    },
+
+    readLocalItems() {
+        for (let i = 0; i < localStorage.length; i++) {
+        let output = document.createElement('DIV')
+        output.classList.add('list__item')
+        output.innerHTML = `
+            <input type="checkbox" name="" class="checkbox">
+            <p>${JSON.parse(localStorage.getItem(localStorage.key(i)))}</p>
+            <button class="delete fa fa-trash"></button>
+            `;
+        todoList.appendChild(output);
+        addLocalCounter();
+        plusCounter();
+        }        
+        itemRemover();
+        addToCompleteList();
+    },
+
+    deleteOneLocalItem() {
+        for (let i = 0; i < localStorage.length; i++) {        
+        localStorage.removeItem(localStorage.key(i))
+    }
+    },
+
+    deleteAllLocalItems() {
+        localStorage.clear()
+    }
+}
+
+local.readLocalItems();
+
+
+
+function addLocalCounter() {
+    localCounter++
+};
+
+function minusLocalCounter(){
+    localCounter--;
+};
+
 /*ITEM COUNTER*/
-let itemCounter = 0;
+
 
 
 function plusCounter() {
@@ -83,7 +131,6 @@ function createCompleteItem(item/*ha nem működik lehet hogy stringgé kell ala
     <p>${item}</p>
  `;
     completeList.appendChild(output);
-    itemRemover()
 };
 
 /*ITEM ADDING*/
@@ -94,8 +141,10 @@ function itemAdder() {
         itemCounterText[0].style.display = 'block';
         completeBtn.style.display = 'inline';
         clearBtn.style.display = 'inline';
+        addLocalCounter();
         hurray();
         createItem(todoInput.value);
+        local.setLocalItem(localCounter, todoInput.value);
         plusCounter();
         clear = false
     }
@@ -106,9 +155,11 @@ function itemAdder() {
 function itemRemover() {
     let close = document.querySelectorAll('.delete');
     for (let i = 0; i < close.length; i++) {
-            close[i].onclick = function () {
+        close[i].onclick = function () {
             let div = this.parentElement;
             div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
+            //local.deleteOneLocalItem();
+            minusLocalCounter()
             minusCounter();
         }
     }
@@ -148,14 +199,20 @@ function clearAll() {
     <p>Time to chill! You have no todos.!</p>
     </div>`
     todoList.innerHTML = noTasksOutput;
+    itemCounter = 0;
+    localCounter = 0;
+    removeItems();
+    local.deleteAllLocalItems();
+};
+
+function removeItems() {
     itemCounterText[0].style.display = 'none';
     completeList.style.display = 'none';
-    completeList.innerHtml = '';
     completeBtn.style.display = 'none';
     clearBtn.style.display = 'none';
     completeBtn.innerText = 'Show Complete';
-    itemCounter = 0;
-}
+    completeList.innerHTML = '';
+};
 
 function hurray() {
     if (clear == true) {
@@ -168,5 +225,3 @@ function hurray() {
 plusBtn.addEventListener('click', itemAdder);
 completeBtn.addEventListener('click', showHideComplete);
 clearBtn.addEventListener('click', clearAll);
-
-

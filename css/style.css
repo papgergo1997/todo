@@ -133,8 +133,11 @@ h1 {
     height: 1.2rem;
 }
 
+.checkbox:hover {
+    cursor: pointer;
+}
+
 .delete {
-    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -150,6 +153,12 @@ h1 {
     animation: delete 2s 1;    
 }
 
+
+.delete:hover {
+    background-color: rgb(200, 74, 74);
+    
+}
+
 @keyframes delete {
     0% {
         right: -50px
@@ -158,12 +167,6 @@ h1 {
         right:0px
     }
 }
-
-.delete:hover {
-    background-color: rgb(200, 74, 74);
-}
-
-
 
 /*Complete List*/
 .list__complete {
