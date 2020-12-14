@@ -161,7 +161,7 @@ function itemRemover() {
     for (let i = 0; i < close.length; i++) {
         close[i].onclick = function () {
             let div = this.parentElement;
-            div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
+            div.remove();
             //local.deleteOneLocalItem();
             minusLocalCounter()
             minusCounter();
@@ -186,7 +186,7 @@ function addToCompleteList() {
     for (let i = 0; i < checkbox.length; i++) {
         checkbox[i].onclick = function () {
             let div = this.parentElement;
-            div.style.display = 'none';//Ezt még valahogy át kell dolgozni!!!
+            div.remove();
             let item = div.innerText
             local.deleteOneLocalItem(item)
             createCompleteItem(item);
